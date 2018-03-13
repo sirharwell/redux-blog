@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { setFilter } from './actions/filter'
 
 const FilterLink = ({ children, filter, dispatch }) => {
   if (children === filter) {
@@ -10,8 +11,7 @@ const FilterLink = ({ children, filter, dispatch }) => {
     return (
       <a
         href={`#${children}`}
-        onClick={ () => dispatch({ type: 'SET_FILTER', filter: children }) }
-      >
+          onClick={ () => dispatch(setFilter(children)) }      >
         {children}
       </a>
      )

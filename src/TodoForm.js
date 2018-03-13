@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { incId } from './actions/nextId';
+import { addTodo } from './actions/todos';
 
 class TodoForm extends React.Component {
   state = { name: '' }
@@ -9,9 +11,9 @@ class TodoForm extends React.Component {
     const { dispatch, id } = this.props
     const { name } = this.state
     const todo = { name, id, complete: false }
-    dispatch({ type: 'ADD_TODO', todo })
-    dispatch({ type: 'INC_ID' })
-    this.setState({ name: '' })
+    dispatch(addTodo(todo))
+      dispatch(incId())
+          this.setState({ name: '' })
   }
 
   handleChange = (e) => {
